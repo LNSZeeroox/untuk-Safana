@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🚀</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #2b6cb0;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            animation: bounceIn 1s ease;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+
+        /* Container Slideshow ala Video Animation */
+        .video-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        /* Bungkus untuk slide aktif */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: videoPlay 12s infinite ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        /* Atur delay tiap foto agar bergantian (Total durasi 12 detik / 3 foto = 4 detik per foto) */
+        .slide:nth-child(1) { animation-delay: 0s; }
+        .slide:nth-child(2) { animation-delay: 4s; }
+        .slide:nth-child(3) { animation-delay: 8s; }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Efek Ken Burns (zoom perlahan ala video dokumenter) */
+            animation: kenBurns 4s infinite linear;
+        }
+
+        /* Overlay gelap di bawah teks biar terbaca */
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            z-index: 2;
+        }
+
+        .caption {
+            position: relative;
+            z-index: 3;
+            color: white;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+
+        /* Progress Bar di bagian bawah ala loading video */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #4299e1;
+            width: 100%;
+            z-index: 4;
+            transform-origin: left;
+            animation: progressTime 4s infinite linear;
+        }
+
+        /* Keyframes untuk Animasi Berganti Foto (Fade) */
+        @keyframes videoPlay {
+            0%, 8.33% { opacity: 0; }
+            16.66%, 33.33% { opacity: 1; }
+            41.66%, 100% { opacity: 0; }
+        }
+
+        /* Keyframes untuk Efek Zoom Bergerak ala Video */
+        @keyframes kenBurns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* Keyframes untuk Loading Bar */
+        @keyframes progressTime {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            60% { transform: scale(1.02); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Selamat Berkurang Umur! 🎂✨</h1>
+        <p class="subtitle">Duduk manis, nikmati video kompilasi manusia favorit satu ini.</p>
+
+        <!-- Bagian Utama: Animasi Video Web -->
+        <div class="video-slider">
+            
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="1.jpg" alt="Momen Pas Waras">
+                <div class="slide-overlay"></div>
+                <div class="caption">Momen pas lagi waras. 👍</div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="2.jpg" alt="Foto Keren">
+                <div class="slide-overlay"></div>
+                <div class="caption">Jarang-jarang kelihatan keren begini. 😎</div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="3.jpg" alt="Doa">
+                <div class="slide-overlay"></div>
+                <div class="caption">Semoga sehat terus dan banyak duitnya! 💵</div>
+            </div>
+
+            <!-- Garis Loading Indikator Waktu -->
+            <div class="progress-bar"></div>
+
+        </div>
+
+        <footer>
+            Dikirim dengan niat tulus tanpa pamrih.
+        </footer>
+    </div>
+
+</body>
+</html>
